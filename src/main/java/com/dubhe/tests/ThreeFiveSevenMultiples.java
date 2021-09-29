@@ -8,9 +8,9 @@ import java.util.Arrays;
  */
 public class ThreeFiveSevenMultiples {
 
-	private static int sumMultiplesOf357forloop(int[] numbers) {
+	public static long sumMultiplesOf357forloop(int[] numbers) {
 
-		int sum = 0;
+		long sum = 0;
 		ArrayList<Integer> multiples = new ArrayList<>();
 
 		for (int i = 0; i < numbers.length; i++) {
@@ -26,9 +26,9 @@ public class ThreeFiveSevenMultiples {
 		return sum;
 	}
 
-	private static int sumMultiplesOf357forEach(int[] numbers) {
+	public static long sumMultiplesOf357forEach(int[] numbers) {
 
-		int sum = 0;
+		long sum = 0;
 		ArrayList<Integer> multiples = new ArrayList<>();
 
 		for (int i : numbers) {
@@ -44,24 +44,24 @@ public class ThreeFiveSevenMultiples {
 		return sum;
 	}
 
-	private static int sumMultiplesOf357stream(int[] numbers) {
+	public static long sumMultiplesOf357stream(int[] numbers) {
 
 		return Arrays.stream(numbers)
 				.filter(i -> (i % 3 == 0 || i % 5 == 0 || i % 7 == 0))
 				.sum();
 	}
 
-	public static int sumMultiplesOf357(int[] numbers)
+	public static long sumMultiplesOf357(int[] numbers)
 			throws Exception {
 
-		int forloop = sumMultiplesOf357forloop(numbers);
-		int foreach = sumMultiplesOf357forEach(numbers);
-		int filter = sumMultiplesOf357stream(numbers);
+		long forloop = sumMultiplesOf357forloop(numbers);
+		long foreach = sumMultiplesOf357forEach(numbers);
+		long filter = sumMultiplesOf357stream(numbers);
 
 		if (forloop != foreach || foreach != filter) {
 			throw new Exception("Some algorithm run wrong.");
 		}
 
-		return foreach;
+		return forloop;
 	}
 }
