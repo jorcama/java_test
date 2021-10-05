@@ -1,4 +1,4 @@
-package com.dubhe.tests;
+package com.dubhe.tests.security;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,6 +15,10 @@ import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 
 public class KeyStoreTest {
+
+	private String key = "PaJyn8zpCQKyeqAcgRexG18V2euDZw41b6YNGbeemJoxrbZJ/4JfMw==";
+	private String hexString = "50614A796E387A7043514B79657141636752657847313856326575445A7734316236594E476265656D4A6F7872625A4A2F344A664D773D3D";
+
 	@Test
 	public void shouldGenerateAStringToken()
 			throws Exception {
@@ -36,9 +40,6 @@ public class KeyStoreTest {
 			System.out.println("private key: " + new String(Base64.getEncoder().encode(pkcs8EncodedKeySpec.getEncoded())));
 		}
 	}
-
-	private String key = "PaJyn8zpCQKyeqAcgRexG18V2euDZw41b6YNGbeemJoxrbZJ/4JfMw==";
-	private String hexString = "50614A796E387A7043514B79657141636752657847313856326575445A7734316236594E476265656D4A6F7872625A4A2F344A664D773D3D";
 
 	@Test
 	public void shouldDecodeHex()
