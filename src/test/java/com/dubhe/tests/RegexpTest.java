@@ -1,6 +1,7 @@
 package com.dubhe.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
@@ -15,10 +16,7 @@ public class RegexpTest {
 	@Test
 	public void shouldTestDocxRegExp()
 			throws Exception {
-		String regexp = "word/(document|header?([0-9])|footer?([0-9])).xml";
-
-		//		|| entryName.equals("word/header1.xml") || entryName.equals("word/header2.xml") || entryName.equals("word/header3.xml")
-		//		|| entryName.equals("word/footer1.xml") || entryName.equals("word/footer2.xml") || entryName.equals("word/footer3.xml")) {
+		String regexp = "word/(document|(header|footer)([0-9]+)).xml";
 
 		Pattern pattern = Pattern.compile(regexp);
 
@@ -36,10 +34,16 @@ public class RegexpTest {
 		assertTrue("word/header2.xml".matches(regexp));
 		assertTrue("word/header3.xml".matches(regexp));
 		assertTrue("word/header4.xml".matches(regexp));
+		assertTrue("word/header333.xml".matches(regexp));
+		
 		assertTrue("word/footer1.xml".matches(regexp));
 		assertTrue("word/footer2.xml".matches(regexp));
 		assertTrue("word/footer3.xml".matches(regexp));
 		assertTrue("word/footer4.xml".matches(regexp));
+		assertTrue("word/footer44.xml".matches(regexp));
+		
+		assertFalse("word/footer.xml".matches(regexp));
+		assertFalse("word/header.xml".matches(regexp));
 	}
 
 	@Test
