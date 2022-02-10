@@ -1,14 +1,16 @@
 package com.dubhe.tests;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+
 
 public class StringTest {
 
-	
 	@Test
 	public void format() throws IOException {
 		String value = null;

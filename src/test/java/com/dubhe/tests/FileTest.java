@@ -1,6 +1,6 @@
 package com.dubhe.tests;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,11 +13,11 @@ import java.io.InputStream;
 import java.util.zip.CRC32;
 import java.util.zip.CheckedInputStream;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class FileTest {
-	@Before
+	@BeforeEach
 	public void setUp() {
 	}
 

@@ -9,14 +9,9 @@ import java.security.interfaces.RSAPublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import org.junit.jupiter.api.Test;
 
 public class RSAKeyPairGeneratorTest {
-
-	@Rule
-	public TemporaryFolder folder = new TemporaryFolder();
 
 	@Test
 	public void shouldGenerateKeyPair()
@@ -48,8 +43,8 @@ public class RSAKeyPairGeneratorTest {
 		RSAPrivateKey priv = (RSAPrivateKey) keyPair.getPrivate();
 		RSAPublicKey pub = (RSAPublicKey) keyPair.getPublic();
 
-		String temporaryFolder = folder.newFile().getParent();
-		PemFile.writePemFile(priv, "RSA PRIVATE KEY", temporaryFolder + "//id_rsa");
-		PemFile.writePemFile(pub, "RSA PUBLIC KEY", temporaryFolder + "//id_rsa.pub");
+		String tempDir = System.getProperty("java.io.tmpdir");
+		PemFile.writePemFile(priv, "RSA PRIVATE KEY", tempDir + "//id_rsa");
+		PemFile.writePemFile(pub, "RSA PUBLIC KEY", tempDir + "//id_rsa.pub");
 	}
 }

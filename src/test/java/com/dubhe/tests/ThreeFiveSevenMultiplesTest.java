@@ -1,9 +1,10 @@
 package com.dubhe.tests;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for simple App.
@@ -11,7 +12,7 @@ import org.junit.Test;
 
 public class ThreeFiveSevenMultiplesTest {
 
-	@Before
+	@BeforeEach
 	public void setUpStreams() {
 
 	}
@@ -105,7 +106,7 @@ public class ThreeFiveSevenMultiplesTest {
 		System.out.println("stream: " + (System.nanoTime() - start));
 	}
 	
-	@After
+	@AfterEach
 	public void cleanUpStreams() {
 	}
 }

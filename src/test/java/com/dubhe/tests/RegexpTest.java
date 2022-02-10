@@ -1,15 +1,12 @@
 package com.dubhe.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.junit.jupiter.api.Test;
 
 public class RegexpTest {
 
@@ -22,26 +19,26 @@ public class RegexpTest {
 
 		Matcher fieldMatcher = pattern.matcher("word/document.xml");
 		assertTrue(fieldMatcher.find());
-		
+
 		fieldMatcher = pattern.matcher("word/header1.xml");
 		assertTrue(fieldMatcher.find());
-		
+
 		fieldMatcher = pattern.matcher("word/header2.xml");
 		assertTrue(fieldMatcher.find());
-		
+
 		assertTrue("word/document.xml".matches(regexp));
 		assertTrue("word/header1.xml".matches(regexp));
 		assertTrue("word/header2.xml".matches(regexp));
 		assertTrue("word/header3.xml".matches(regexp));
 		assertTrue("word/header4.xml".matches(regexp));
 		assertTrue("word/header333.xml".matches(regexp));
-		
+
 		assertTrue("word/footer1.xml".matches(regexp));
 		assertTrue("word/footer2.xml".matches(regexp));
 		assertTrue("word/footer3.xml".matches(regexp));
 		assertTrue("word/footer4.xml".matches(regexp));
 		assertTrue("word/footer44.xml".matches(regexp));
-		
+
 		assertFalse("word/footer.xml".matches(regexp));
 		assertFalse("word/header.xml".matches(regexp));
 	}

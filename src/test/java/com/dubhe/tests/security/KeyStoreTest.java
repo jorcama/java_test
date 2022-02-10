@@ -1,6 +1,6 @@
 package com.dubhe.tests.security;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.InputStream;
 import java.security.KeyStore;
@@ -12,7 +12,7 @@ import java.util.Base64;
 import javax.xml.bind.DatatypeConverter;
 
 import org.apache.commons.codec.binary.Hex;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class KeyStoreTest {
 
