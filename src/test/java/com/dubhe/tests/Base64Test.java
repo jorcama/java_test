@@ -44,4 +44,50 @@ public class Base64Test {
 		String encodedISOToString = Base64.getEncoder().encodeToString(toEncodeBytesISO);
 		assertEquals(encodedISO, encodedISOToString);
 	}
+	
+	@Test
+	public void decode()
+			throws IOException {
+
+		String toEncode = "ñ";
+
+		byte[] toEncodeBytesUTF8 = toEncode.getBytes(StandardCharsets.UTF_8);
+		String base64Encoded = Base64.getEncoder().encodeToString(toEncodeBytesUTF8);
+
+		byte[] decodedBytes = Base64.getDecoder().decode(base64Encoded);
+		String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
+		
+		assertEquals(toEncode, decoded);
+	}
+	
+	@Test
+	public void decodeURL()
+			throws IOException {
+
+		String toEncode = "ñ";
+
+		byte[] toEncodeBytesUTF8 = toEncode.getBytes(StandardCharsets.UTF_8);
+		String base64Encoded = Base64.getUrlEncoder().encodeToString(toEncodeBytesUTF8);
+
+		byte[] decodedBytes = Base64.getUrlDecoder().decode(base64Encoded);
+		String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
+		
+		assertEquals(toEncode, decoded);
+	}
+	
+	@Test
+	public void UrlEncoderVsEncoder()
+			throws IOException {
+
+		StringBuilder builder = new StringBuilder(1);
+		builder.append(Character.toChars(252));
+		String toEncode = builder.toString();
+		
+		byte[] toEncodeBytesUTF8 = toEncode.getBytes(StandardCharsets.ISO_8859_1);
+		
+		String base64UrlEncoded = Base64.getUrlEncoder().encodeToString(toEncodeBytesUTF8);
+		String base64Encoded = Base64.getEncoder().encodeToString(toEncodeBytesUTF8);
+		
+		assertNotEquals(base64UrlEncoded, base64Encoded);
+	}
 }
