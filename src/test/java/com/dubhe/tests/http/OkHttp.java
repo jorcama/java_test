@@ -39,7 +39,7 @@ public class OkHttp {
 		String sURL = "https://datos.madrid.es/egob/catalogo/format/fmt.json";
 
 		StringBuffer text = new StringBuffer();
-		for (int i = 0; i < 1000000; i++) {
+		for (int i = 0; i < 100000; i++) {
 			text.append("a");
 		}
 
