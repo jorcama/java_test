@@ -8,11 +8,12 @@ import java.util.regex.Pattern;
 
 import org.junit.jupiter.api.Test;
 
-public class RegexpTest {
-
+public class RegexpTest
+{
 	@Test
 	public void shouldTestDocxRegExp()
-			throws Exception {
+			throws Exception
+	{
 		String regexp = "word/(document|(header|footer)([0-9]+)).xml";
 
 		Pattern pattern = Pattern.compile(regexp);
@@ -45,7 +46,8 @@ public class RegexpTest {
 
 	@Test
 	public void shouldTestOpenHrInsightRegExp()
-			throws Exception {
+			throws Exception
+	{
 		String regexp = "open_hr_insight.jsp$|.js$";
 		//regexp = ".js$";
 
@@ -56,14 +58,18 @@ public class RegexpTest {
 
 		// replaces pattern
 		final Matcher fieldMatcher = pattern.matcher(charSequence);
-		if (fieldMatcher.find() == true) {
+		if (fieldMatcher.find() == true)
+		{
 			System.out.println("matches");
-		} else {
+		}
+		else
+		{
 			System.out.println("no matches");
 		}
 	}
 
-	private void v1(String mergeField) {
+	private void v1(String mergeField)
+	{
 		String simpleFieldPatternRegexp = "( *MERGEFIELD *)(\\$\\{)? *\"?(record\\.)?([a-zA-Z0-9_\\-\\.]*)\"? *(\\})?.*";
 		Pattern simpleFieldPattern;
 
@@ -78,19 +84,22 @@ public class RegexpTest {
 		fieldPattern = Pattern.compile(fieldPatternRegexp);
 
 		// checks old sytax
-		if (mergeField.contains("$")) {
+		if (mergeField.contains("$"))
+		{
 			// we're using the full freemarker syntax
 			final Matcher fieldMatcher = fieldPattern.matcher(mergeField);
 			System.out.println(fieldMatcher.replaceAll("\\${" + "record." + "$2$3"));
-		} else {
+		}
+		else
+		{
 			// we are using the basic syntax
 			final Matcher fieldMatcher = simpleFieldPattern.matcher(mergeField);
 			System.out.println(fieldMatcher.replaceAll("$1 \\${" + "record." + "$4}"));
 		}
 	}
 
-	private void v2(String mergeField) {
-
+	private void v2(String mergeField)
+	{
 		String fieldPatternRegexp = " *(MERGEFIELD) *(\\$ *\\{)? *\\\"?(record\\.)?([a-zA-Z0-9_]*)\\\"? *(\\})?( *\\\\\\* *MERGEFORMAT *)?";
 
 		Pattern fieldPattern;
@@ -101,15 +110,18 @@ public class RegexpTest {
 
 		// replaces pattern
 		final Matcher fieldMatcher = fieldPattern.matcher(mergeField);
-		if (fieldMatcher.matches()) {
+		if (fieldMatcher.matches())
+		{
 			System.out.println(fieldMatcher.replaceAll("$1 \\${" + "record." + "$4} $6"));
-		} else {
+		}
+		else
+		{
 			System.out.println(mergeField);
 		}
 	}
 
-	private void v3(String mergeField) {
-
+	private void v3(String mergeField)
+	{
 		String fieldPatternRegexp = " *(MERGEFIELD) *\\\"?(\\[\\\"?[a-zA-Z0-9_\\# =\\\"]*\\])?( *\\$ *\\{)? *\\\"?(record\\.)?([a-zA-Z0-9_]*)\\\"? *(\\})?( *\\\\\\* *MERGEFORMAT *)?";
 		String bb = " *(MERGEFIELD) *(\\\")?(\\[[\\/a-zA-Z0-9_\\# =\\\"]*\\])?( *\\$ *\\{)? *\\\"?(record\\.)?([a-zA-Z0-9_]*)([\\?\\(\\/\\)a-zA-Z0-9_\\# =\\\"]*)? *(\\})?(\\\")?( *\\\\\\* *MERGEFORMAT *)?";
 		String aa = " *(MERGEFIELD) *(\\\")?(\\[[\\/a-zA-Z0-9_\\# =\\\"]*\\])?( *\\$ *\\{)? *\\\"?(record\\.)?([a-zA-Z0-9_]*)([\\?\\(\\/\\)a-zA-Z0-9_\\# =\\\"]*)? *(\\})?(\\\")?( *\\\\\\* *MERGEFORMAT *)?";
@@ -124,16 +136,20 @@ public class RegexpTest {
 		// replaces pattern
 		final Matcher fieldMatcher = fieldPattern.matcher(mergeField);
 		System.out.println(fieldMatcher.replaceAll("$1 $2 $3" + "record." + " $5 $6"));
-		if (fieldMatcher.matches()) {
+		if (fieldMatcher.matches())
+		{
 			System.out.println(fieldMatcher.replaceAll("$1 \\${" + "record." + "$4} $6"));
-		} else {
+		}
+		else
+		{
 			System.out.println("no match " + mergeField);
 		}
 	}
 
 	@Test
 	public void shouldTestMergeFieldRegexpV1V2()
-			throws Exception {
+			throws Exception
+	{
 		System.out.println("V1");
 		String mergeField = "MERGEFIELD [#if record.STD_ID_GENDER == \"1\"]";
 		v1(mergeField);
