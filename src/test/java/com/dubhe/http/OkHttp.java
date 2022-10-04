@@ -1,4 +1,4 @@
-package com.dubhe.tests.http;
+package com.dubhe.http;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

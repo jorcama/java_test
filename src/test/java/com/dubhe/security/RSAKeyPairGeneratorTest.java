@@ -1,4 +1,4 @@
-package com.dubhe.tests.security;
+package com.dubhe.security;
 
 import java.io.IOException;
 import java.security.KeyPair;

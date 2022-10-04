@@ -1,4 +1,4 @@
-package com.dubhe.tests.word2pdf;
+package com.dubhe.word2pdf;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

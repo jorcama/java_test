@@ -1,4 +1,4 @@
-package com.dubhe.tests.security;
+package com.dubhe.security;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

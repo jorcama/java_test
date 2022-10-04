@@ -1,4 +1,4 @@
-package com.dubhe.tests.security;
+package com.dubhe.security;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;

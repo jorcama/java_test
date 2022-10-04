@@ -1,4 +1,4 @@
-package com.dubhe.tests.security;
+package com.dubhe.security;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
