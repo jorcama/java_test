@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 
 import org.junit.jupiter.api.Test;
@@ -36,5 +37,19 @@ public class CalendarTest
 				assertFalse(fileNames.add(tempFileName));
 			}
 		}
+	}
+
+	@Test
+	public void checkDates()
+	{
+		Date date = new Date();
+		
+		System.out.println(date.getTime());
+		
+		System.out.println(date.toGMTString());
+		System.out.println(date.getTimezoneOffset());
+		System.out.println(date.toString());
+		
+		System.out.println(date.toInstant().toString());
 	}
 }

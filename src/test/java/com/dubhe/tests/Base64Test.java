@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -49,7 +50,7 @@ public class Base64Test {
 	public void decode()
 			throws IOException {
 
-		String toEncode = "ñ";
+		String toEncode = "éñçødè 	!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ºª\n";
 
 		byte[] toEncodeBytesUTF8 = toEncode.getBytes(StandardCharsets.UTF_8);
 		String base64Encoded = Base64.getEncoder().encodeToString(toEncodeBytesUTF8);
@@ -64,15 +65,18 @@ public class Base64Test {
 	public void decodeURL()
 			throws IOException {
 
-		String toEncode = "ñ";
+		String toEncode = "%sconnect/authorize?response_type=code&client_id=%s&state=%s&nonce=%s&scope=openid profile email offline_access&redirect_uri=%s";
 
-		byte[] toEncodeBytesUTF8 = toEncode.getBytes(StandardCharsets.UTF_8);
+		String a = URLEncoder.encode(toEncode, "US-ASCII");
+		
+		byte[] toEncodeBytesUTF8 = a.getBytes(StandardCharsets.UTF_8);
 		String base64Encoded = Base64.getUrlEncoder().encodeToString(toEncodeBytesUTF8);
+		
 
 		byte[] decodedBytes = Base64.getUrlDecoder().decode(base64Encoded);
 		String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
 		
-		assertEquals(toEncode, decoded);
+		assertEquals(a, decoded);
 	}
 	
 	@Test
